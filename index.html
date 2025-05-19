@@ -1,0 +1,104 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Menu</title>
+        <link rel="stylesheet" href="style.css">
+        <audio src="pictures/Friendly Thug 52 Ngg Lost Angeles.mp3" autoplay loop></audio>
+    </head>
+    <body>
+    </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <audio src="pictures/Friendly Thug 52 Ngg Lost Angeles.mp3" autoplay loop></audio>
+</head>
+<body>
+    <audio src="pictures/Friendly Thug 52 Ngg Lost Angeles.mp3" autoplay loop></audio>
+  <div class="background-overlay"></div>
+
+  <div class="menu-box">
+    <h2 class="username">Welcome, Mark</h2>
+
+    <p class="avatar-title">Choose your avatar:</p>
+    <div class="avatar-selection">
+      <img src="pictures/palka1.png" class="avatar" alt="Avatar 1">
+      <img src="pictures/palka2.png" class="avatar" alt="Avatar 2">
+      <img src="pictures/palka3.png" class="avatar" alt="Avatar 3">
+      <img src="pictures/palka4.png" class="avatar" alt="Avatar 4">
+    </div>
+
+    <div class="buttons">
+      <button class="btn logout">Logout</button>
+      <button class="btn play" type="button" onclick="window.location.href='battlefield.html'">Play</button>
+    </div>
+  </div>
+
+  <!-- <script>
+    const avatars = document.querySelectorAll('.avatar');
+    avatars.forEach(avatar => {
+      avatar.addEventListener('click', () => {
+        avatars.forEach(a => a.classList.remove('selected'));
+        avatar.classList.add('selected');
+      });
+    });
+  </script> -->
+  <script>
+    const avatars = document.querySelectorAll('.avatar');
+    let selectedAvatar = '';
+  
+    avatars.forEach(avatar => {
+      avatar.addEventListener('click', () => {
+        // Снять выделение со всех
+        avatars.forEach(a => a.classList.remove('selected'));
+  
+        // Выделить текущий
+        avatar.classList.add('selected');
+  
+        // Извлечь имя файла из src
+        const src = avatar.getAttribute('src');
+        selectedAvatar = src.split('/').pop(); // например: avatar1.png
+  
+        // (необязательно) вывести в консоль
+        console.log("Выбранный аватар:", selectedAvatar);
+  
+        // (опционально) сохранить локально
+        localStorage.setItem('selectedAvatar', selectedAvatar);
+      });
+    });
+  
+    // Пример: отправка выбранного аватара на сервер
+    document.querySelector('.play').addEventListener('click', () => {
+      if (!selectedAvatar) {
+        alert("Please choose an avatar before continuing.");
+        return;
+      }
+  
+      // Пример отправки fetch-запросом
+      fetch('/save-avatar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ avatar: selectedAvatar })
+      }).then(response => {
+        if (response.ok) {
+          console.log("Avatar saved successfully");
+          // переадресация, например:
+          // window.location.href = '/game.html';
+        } else {
+          alert("Failed to save avatar");
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
