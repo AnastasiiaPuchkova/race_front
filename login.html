@@ -40,8 +40,11 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             data: {
-                                username: login,
-                                password: password
+                                id: login,
+                                type: "login",
+                                attributes: {
+                                    password: password
+                                }
                             }
                         })
                     });

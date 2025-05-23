@@ -50,9 +50,12 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             data: {
-                                username: login,
-                                password: password,
-                                password_confirmation: confirm_password
+                                id: login,
+                                type: "register",
+                                attributes: {
+                                    password: password,
+                                    password_confirmation: confirm_password
+                                }
                             }
                         })
                     });
