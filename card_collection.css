@@ -50,11 +50,19 @@ body {
 }
 
 .grid-item {
+    border: 2px solid #1e1e1e;
     display: flex;
     flex-direction: column;
     padding: 5px;
     font-weight: bold;
     text-align: center;
+    transition: background-color ease 0.3s;
+}
+
+.grid-item:hover{
+    width: calc( width + 15px );
+    height: calc( height + 15px );
+    background-color: #444;
 }
 
 .card-stats{
@@ -68,36 +76,46 @@ body {
 }
 
 .img_container{
+    height: 150px;
     position: relative;
 }
 
 .img_container img {
-    border-radius: 5%;
+    border-radius: 10px;
     height: 150px;
     width: auto;
     box-shadow: 0 0 5px 2.5px rgba(0, 0, 0, 0.6);
 }
+
+.desc{
+    padding: 10px;
+    font-weight: normal;
+    text-align: left;
+}
 .hp{
-    
+    border-top-left-radius:10px ;
     position: absolute;
     left:0;
     top:0;
     background-color: gray;
 }
 .cost{
+    border-bottom-left-radius:10px ;
     position: absolute;
     left:0;
     bottom:0;
     background-color: blue;
 }
 .dmg{
+    border-top-right-radius: 10px;
     position: absolute;
     right:0;
     top:0;
     background-color: red;
 }
 .ag{
-    background-color: green;
+    background-color: rgba(0, 255, 0, 0.4);
+    box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.3);
 }
 .img_container {
     display: block;
@@ -105,9 +123,26 @@ body {
 
 
 .buttons_container{
+
     height: 20%;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
+.buttons_container button{
+    border: none;
+    height: 50px;
+    background-color: #333;
+    font-size: 15px;
+    color:white;
+    width: 150px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: box-shadow ease 0.3s;
+}
+.buttons_container button:hover{
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
 
+}
   
